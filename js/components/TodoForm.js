@@ -178,8 +178,12 @@ function create() {
 
     handleSubmit(Todos.update);
   };
-}
 
+  $('.new-todo-btn').onclick = (event) => {
+    $('#todo-form').reset();
+  };
+
+}
 
 function handleSubmit(callback) {
   const form = $('#todo-form');
