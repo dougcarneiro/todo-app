@@ -10,15 +10,15 @@ function create() {
         class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto"
       >
         <div
-          class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]"
+          class="flex flex-col bg-white border shadow-sm rounded-xl"
         >
           <div
-            class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700"
+            class="flex justify-between items-center py-3 px-4 border-b "
           >
-            <h3 class="font-bold text-gray-800 dark:text-white">Remover Afazer</h3>
+            <h3 class="font-bold text-violet-800">Remover Afazer</h3>
             <button
               type="button"
-              class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+              class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-violet-500 hover:text-violet-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm"
               data-hs-overlay="#hs-basic-modal"
             >
               <span class="sr-only">Close</span>
@@ -38,23 +38,23 @@ function create() {
             </button>
           </div>
           <div class="p-4 overflow-y-auto">
-            <p class="mt-1 text-gray-800 dark:text-gray-400">
+            <p class="mt-1 text-violet-800">
               Deseja remover o afazer <span class="todo-title font-semibold"></span>?
             </p>
           </div>
           <div
-            class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700"
+            class="flex justify-end items-center gap-x-2 py-3 px-4 border-t"
           >
             <button
               type="button"
-              class="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+              class="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-violet-700 shadow-sm align-middle hover:bg-violet-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm"
               data-hs-overlay="#hs-basic-modal"
             >
               Cancelar
             </button>
             <button
               type="button"
-              class="remove-todo-btn py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+              class="remove-todo-btn py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-viole-500 focus:ring-offset-2 transition-all text-sm"
               data-hs-overlay="#hs-basic-modal"
             >
               Confirmar
