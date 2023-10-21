@@ -46,7 +46,7 @@ function getValues() {
 function create() {
   const form = `
   <div class="bg-white shadow-md rounded-lg p-4 relative max-w-md mx-auto my-5">
-  <h2 class="text-center text-2xl my-7 font-bold">Meu Afazer</h1>
+  <h2 class="text-center text-2xl mb-7 font-bold text-violet-500">Meu Afazer</h1>
     <div class="mb-5 flex justify-center mt-1">
       <form id="todo-form">
       <input
@@ -57,7 +57,7 @@ function create() {
       <div class="mb-3">
         <label
           for="title"
-          class="w-full block text-md font-medium mb-2 dark:text-white"
+          class="w-full block text-md font-medium mb-2 text-violet-800 dark:text-white"
         >
           Título
         </label>
@@ -65,40 +65,40 @@ function create() {
           type="text"
           id="title"
           name="title"
-          class="w-full py-3 px-4 block border border-gray-200 rounded-md text-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+          class="w-full py-3 px-4 block border border-violet-200 rounded-md text-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-violet-700 dark:text-violet-400"
           required
         >
       </div>
       <div class="mb-3">
         <label
           for="text"
-          class="w-full block text-md font-medium mb-2 dark:text-white"
+          class="w-full block text-md font-medium mb-2 text-violet-800 dark:text-white"
         >
           Texto
         </label>
-        <textarea id="text" name="text" rows="4" class=" w-full block p-2.5 text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descreva o seu afazer..."></textarea>
+        <textarea id="text" name="text" rows="4" class=" w-full block p-2.5 text-lg text-violet-900 bg-violet-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descreva o seu afazer..."></textarea>
       </div>
 
       <div class="mb-3">
         <label
           for="priority"
-          class="w-full block text-md font-medium mb-2 dark:text-white">
+          class="w-full block text-md font-medium mb-2 text-violet-800 dark:text-white">
           Prioridade
         </label>
         <select
           name="priority"
           id="priority"
           class="w-full py-2 px-4 border border-gray-200 rounded-md text-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-          <option value="normal">Normal</option>
-          <option value="light">Leve</option>
-          <option value="medium">Média</option>
-          <option value="high">Alta</option>
+          <option value="normal" class="text-violet-800">Normal</option>
+          <option value="light" class="text-violet-800">Leve</option>
+          <option value="medium" class="text-violet-800">Média</option>
+          <option value="high" class="text-violet-800">Alta</option>
         </select>
       </div>
       <div class="mb-3">
         <label
           for="date"
-          class="block text-md font-medium mb-2 dark:text-white"
+          class="block text-md font-medium mb-2 text-violet-800 dark:text-white"
         >
           Data
         </label>
@@ -106,13 +106,13 @@ function create() {
           type="date"
           id="date"
           name="date"
-          class="py-3 px-4 block w-full border border-gray-200 rounded-md text-md focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+          class="text-violet-800 py-3 px-4 block w-full border border-violet-200 rounded-md text-md focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-violet-700 dark:text-violet-400"
         >
       </div>
       <div>
         <button
           type="submit"
-          class="submit-button py-3 px-4 inline-flex w-full justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-500 text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all text-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-800"
+          class="submit-button py-3 px-4 inline-flex w-full justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-md dark:bg-violet-700 dark:hover:bg-violet-600 dark:focus:ring-offset-violet-800"
           data-hs-overlay="#todo-drawer"
         >
           Enviar
@@ -127,7 +127,7 @@ function create() {
     <div class="fixed top-8 right-8">
       <button
         type="button"
-        class="new-todo-btn py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-500 text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-800"
+        class="new-todo-btn py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm dark:bg-violet-700 dark:hover:bg-violet-600 dark:focus:ring-offset-violet-800"
         data-hs-overlay="#todo-drawer"
       >
         + Novo Afazer
@@ -138,16 +138,16 @@ function create() {
   const drawer = `
     <div
       id="todo-drawer"
-      class="hs-overlay hs-overlay-open:translate-x-0 overflow-y-auto hidden translate-x-full fixed top-0 right-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-l dark:bg-gray-800 dark:border-gray-700"
+      class="hs-overlay hs-overlay-open:translate-x-0 overflow-y-auto hidden translate-x-full fixed top-0 right-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-l dark:bg-violet-800 dark:border-violet-700"
       tabindex="-1"
     >
       <div
-        class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700"
+        class="flex justify-between items-center py-3 px-4 border-b dark:border-violet-700"
       >
-        <h3 class="font-bold text-gray-800 dark:text-white">Afazer</h3>
+        <h3 class="font-bold text-violet-800 dark:text-white">Afazer</h3>
         <button
           type="button"
-          class="todo-drawer-close inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-500 dark:hover:text-gray-400 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+          class="todo-drawer-close inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-violet-500 hover:text-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-violet-500 dark:hover:text-violet-400 dark:focus:ring-violet-700 dark:focus:ring-offset-violet-800"
           data-hs-overlay="#todo-drawer"
         >
           <span class="sr-only">Cadastro de Afazer</span>
