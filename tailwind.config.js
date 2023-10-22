@@ -6,6 +6,8 @@ module.exports = {
     fontFamily: {
       'montserrat': ['Montserrat'],
       'amatic': ['Amatic SC'],
+      'satisfy': ['Satisfy'],
+
     },
   },
   plugins: [require('preline/plugin')],

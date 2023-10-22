@@ -46,7 +46,7 @@ function getValues() {
 function create() {
   const form = `
   <div class="bg-white rounded-lg p-4 relative max-w-md mx-auto mt-0 h-full">
-  <h2 class="text-center text-2xl mb-7 font-bold text-violet-500">Meu Afazer</h1>
+  <h2 class="font-satisfy text-center text-5xl mb-7 font-bold text-violet-500">Meu Afazer</h1>
     <div class="mb-5 flex justify-center mt-1">
       <form id="todo-form">
       
@@ -148,7 +148,7 @@ function create() {
           <div
             class="flex justify-between items-center py-3 px-4 border-b "
           >
-            <h3 class="font-bold text-violet-800">Meu Afazer</h3>
+            <h3 class="font-satisfy font-bold text-xl text-violet-800">Meu Afazer</h3>
             <button
               type="button"
               class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-violet-500 hover:text-violet-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm"
