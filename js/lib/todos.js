@@ -15,7 +15,6 @@ function load(filter) {
     $('.container h2').innerText = ''
     todos.map(TodoCard.create);
   }
-  
 }
 
 function create(todo) {
