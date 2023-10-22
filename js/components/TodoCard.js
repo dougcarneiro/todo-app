@@ -2,6 +2,7 @@ import Todos from '../lib/todos';
 import TodoForm from './TodoForm';
 import { $ } from '../lib/dom';
 import { formatDate } from '../lib/format';
+import Storage from '../services/storage';
 
 const background = {
   normal: 'bg-white',
@@ -83,16 +84,14 @@ function create(todo) {
   }
  
   $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).onchange = () => {
-    todo.is_completed = $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).checked
-    Todos.update(todo)
+    const updatedTodo = Storage.read('todos', todo.id)
+    updatedTodo.is_completed = $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).checked
+    Todos.update(updatedTodo)
   }
 
   $(`#todo-${todo.id} .icon-pencil`).onclick = () => {
-    const form = $('#todo-form');
-    form.reset()
     TodoForm.setValues(todo);
-
-    TodoForm.handleSubmit((todo) => Todos.update(todo));
+    TodoForm.handleSubmit();
   };
 
   $(`#todo-${todo.id} .icon-trash`).onclick = () => {

@@ -62,11 +62,12 @@ function create() {
           Título
         </label>
         <input
+          required
+          maxlength="50"
           type="text"
           id="title"
           name="title"
-          class="mt-1 mb-1 w-full py-3 px-4 block border border-violet-200 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
-          required>
+          class="mt-1 mb-1 w-full py-3 px-4 block border border-violet-200 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
       </div>
       <div class="mt-4">
         <label
@@ -75,7 +76,7 @@ function create() {
         >
           Texto
         </label>
-        <textarea id="text" name="text" rows="4" class=" w-full block p-2.5 text-lg text-violet-900 bg-violet-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-violet-500 " placeholder="Descreva o seu afazer..." required></textarea>
+        <textarea required maxlength="300" id="text" name="text" rows="4" class=" w-full block p-2.5 text-lg text-violet-900 bg-violet-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-violet-500 " placeholder="Descreva o seu afazer..."></textarea>
       </div>
 
       <div>
@@ -182,6 +183,7 @@ function create() {
   
   $('.submit-button').onclick = () => {
     handleSubmit();
+
   };
 
   $('.new-todo-btn').onclick = () => {
@@ -198,7 +200,6 @@ function handleSubmit() {
     const todo = getValues();
 
     Todos.update(todo);
-    form.reset();
   };
 }
 
