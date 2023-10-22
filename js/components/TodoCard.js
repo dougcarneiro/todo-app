@@ -46,7 +46,7 @@ function create(todo) {
       <div class="absolute bottom-4 right-4 inline-flex">
         <span
           class="icon-trash mr-1 text-gray-400 hover:text-gray-700 cursor-pointer"
-          data-hs-overlay="#hs-basic-modal"
+          data-hs-overlay="#remove-modal"
         >
           <span
             class="iconify"
@@ -56,7 +56,7 @@ function create(todo) {
         </span>
         <span
           class="icon-pencil text-gray-400 hover:text-gray-700 cursor-pointer"
-          data-hs-overlay="#todo-drawer"
+          data-hs-overlay="#add-modal"
         >
           <span
             class="iconify"
@@ -88,15 +88,17 @@ function create(todo) {
   }
 
   $(`#todo-${todo.id} .icon-pencil`).onclick = () => {
+    const form = $('#todo-form');
+    form.reset()
     TodoForm.setValues(todo);
 
     TodoForm.handleSubmit((todo) => Todos.update(todo));
   };
 
   $(`#todo-${todo.id} .icon-trash`).onclick = () => {
-    $(`.modal .todo-title`).innerText = todo.title;
+    $(`#remove-modal .todo-title`).innerText = todo.title;
 
-    $(`.modal .remove-todo-btn`).onclick = () =>
+    $(`#remove-modal .remove-todo-btn`).onclick = () =>
       Todos.remove(todo);
   };
 }

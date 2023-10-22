@@ -1,6 +1,11 @@
-export const searchBar = `
+import { $ } from '../lib/dom';
+import Todos from '../lib/todos';
+
+
+function create() {
+    const searchBar = `
 <form id="search-bar" class="flex items-center justify-center">   
-    <div class="relative w-1/2 my-10">
+    <div class="relative w-1/2 my-8">
         <div class=""/>
         </div>
         <input type="text" id="search-input" class="bg-white rounded-full text-violet-900 text-md hover:outline-none hover:ring-2 hover:ring-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 text-md block w-full pl-10 p-2.5" placeholder="Busque por um afazer..." required>
@@ -12,5 +17,15 @@ export const searchBar = `
         <span class="sr-only">Search</span>
     </button>
 </form>
-
 `
+    $('.container').insertAdjacentHTML('beforebegin', searchBar);
+
+    $('#search-button').addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector('.todo').innerHTML = ''
+        const searchInput = document.querySelector('#search-input').value
+        Todos.load(searchInput);
+    })
+}
+
+export default { create }

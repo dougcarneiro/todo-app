@@ -10,7 +10,6 @@ function load(filter) {
     );
   }
   if (todos.length == 0) {
-    
     $('.container h2').innerText = 'Nenhum afazer encontrado.'
   } else {
     $('.container h2').innerText = ''

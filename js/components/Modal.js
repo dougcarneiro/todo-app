@@ -3,7 +3,7 @@ import { $ } from '../lib/dom';
 function create() {
   const modal = `
     <div
-      id="hs-basic-modal"
+      id="remove-modal"
       class="modal hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto"
     >
       <div
@@ -19,7 +19,7 @@ function create() {
             <button
               type="button"
               class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-violet-500 hover:text-violet-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm"
-              data-hs-overlay="#hs-basic-modal"
+              data-hs-overlay="#remove-modal"
             >
               <span class="sr-only">Close</span>
               <svg
@@ -48,14 +48,14 @@ function create() {
             <button
               type="button"
               class="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-violet-700 shadow-sm align-middle hover:bg-violet-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm"
-              data-hs-overlay="#hs-basic-modal"
+              data-hs-overlay="#remove-modal"
             >
               Cancelar
             </button>
             <button
               type="button"
               class="remove-todo-btn py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-viole-500 focus:ring-offset-2 transition-all text-sm"
-              data-hs-overlay="#hs-basic-modal"
+              data-hs-overlay="#remove-modal"
             >
               Confirmar
             </button>
