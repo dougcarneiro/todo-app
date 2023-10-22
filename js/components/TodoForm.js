@@ -181,23 +181,23 @@ function create() {
   $('.container').insertAdjacentHTML('afterend', addModal);
   
   $('.submit-button').onclick = () => {
-    handleSubmit(Todos.update);
+    handleSubmit();
   };
 
   $('.new-todo-btn').onclick = () => {
     $('#todo-form').reset();
+    $('#todo-form #id').value = ''
   }
 }
 
-function handleSubmit(callback) {
+function handleSubmit() {
   const form = $('#todo-form')
   form.onsubmit = async (event) => {
     event.preventDefault();
 
     const todo = getValues();
 
-    callback(todo);
-    // form.submit();
+    Todos.update(todo);
     form.reset();
   };
 }
