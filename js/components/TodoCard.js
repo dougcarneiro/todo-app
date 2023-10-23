@@ -90,7 +90,8 @@ function create(todo) {
   }
 
   $(`#todo-${todo.id} .icon-pencil`).onclick = () => {
-    TodoForm.setValues(todo);
+    const TodoToUpdate = Storage.read('todos', todo.id)
+    TodoForm.setValues(TodoToUpdate);
     TodoForm.handleSubmit();
   };
 
