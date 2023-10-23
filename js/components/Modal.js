@@ -15,7 +15,7 @@ function create() {
           <div
             class="flex justify-between items-center py-3 px-4 border-b "
           >
-            <h3 class="font-bold text-violet-800">Remover Afazer</h3>
+            <h3 class="font-satisfy text-xl font-bold text-violet-800">Remover Afazer</h3>
             <button
               type="button"
               class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-violet-500 hover:text-violet-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm"
