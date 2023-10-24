@@ -18,7 +18,7 @@ function create() {
                         <input id="hs-dropdown-item-checkbox-done" name="hs-dropdown-item-checkbox-done" type="checkbox" class="done-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-done-description">
                     </div>
                     <label for="hs-dropdown-item-checkbox-done" class="ml-3.5">
-                    <span class="block text-sm font-semibold text-violet-800">Feito</span>
+                    <span class="block text-sm font-semibold text-violet-800">Feitos</span>
                     <span id="hs-dropdown-item-checkbox-done-description" class="block text-sm text-violet-600">Afazeres finalizados</span>
                     </label>
                 </div>
