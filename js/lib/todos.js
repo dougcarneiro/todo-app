@@ -1,6 +1,7 @@
 import TodoCard from '../components/TodoCard';
 import Storage from '../services/storage';
-import { $ } from '../lib/dom';
+import { $ } from './dom';
+import { orderByDate } from './orderByDate';
 
 function load(title, 
               notDone=undefined, 
@@ -63,15 +64,19 @@ function load(title,
       filteredTodos = [...todosHigh, ...todosMedium, ...todosLow, ...todosNormal]
       
       todos = filteredTodos
-  }
 
+  }
+  
   if (todos.length == 0) {
     $('.container h2').innerText = 'Nenhum afazer encontrado.'
   } else {
     $('.container h2').innerText = ''
+    orderByDate(todos)
     todos.map(TodoCard.create);
   }
 }
+
+
 
 function create(todo) {
   delete todo.id;

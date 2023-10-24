@@ -32,15 +32,16 @@ function getValues() {
 
   let date = ''
 
+  const created_at = new Date().toISOString();
   if (!todo.date) {
-    date = new Date().toISOString();
+    date = created_at;
   } else {
     date = new Date(
       todo.date + 'T00:00:00-03:00'
     ).toISOString();
   }
   
-  return { ...todo, date };
+  return { ...todo, date, created_at };
 }
 
 function create() {

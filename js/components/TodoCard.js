@@ -38,9 +38,15 @@ function create(todo) {
           </span>
         </p>
         <p class="mt-4 text-sm text-gray-500">
-          <span class="font-bold">Data:</span>
+          <span class="font-bold">Data do Afazer:</span>
           <span class="todo-date">
             ${formatDate(todo.date)}
+          </span>
+        </p>
+        <p class="mt-4 text-sm text-gray-500">
+          <span class="font-bold">Criado em:</span>
+          <span class="todo-created-at">
+            ${formatDate(todo.created_at)}
           </span>
         </p>
       </div>
@@ -69,7 +75,7 @@ function create(todo) {
     </div>
   `;
 
-  $('.todo').insertAdjacentHTML('beforeend', card);
+  $('.todo').insertAdjacentHTML('afterbegin', card);
 
   $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).checked = todo.is_completed
   
