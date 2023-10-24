@@ -101,17 +101,94 @@ function create() {
     const normalCheckbox = $('#hs-dropdown-item-checkbox-normal')
 
     $('#search-button').addEventListener('click', (event) => {
-        event.preventDefault();
-        document.querySelector('.todo').innerHTML = ''
-        const inputFilter = document.querySelector('#search-input').value
-        Todos.load(inputFilter, 
-                   notDoneCheckbox.checked,
-                   doneCheckbox.checked,
-                   highCheckbox.checked,
-                   mediumCheckbox.checked,
-                   lowCheckbox.checked,
-                   normalCheckbox.checked);
+       search(event,
+              doneCheckbox,
+              notDoneCheckbox,
+              highCheckbox,
+              mediumCheckbox,
+              lowCheckbox,
+              normalCheckbox)
     })
+
+    $('#hs-dropdown-item-checkbox-done').addEventListener('change', (event) => {
+        search(event,
+               doneCheckbox,
+               notDoneCheckbox,
+               highCheckbox,
+               mediumCheckbox,
+               lowCheckbox,
+               normalCheckbox)
+     })
+
+     $('#hs-dropdown-item-checkbox-not-done').addEventListener('change', (event) => {
+        search(event,
+               doneCheckbox,
+               notDoneCheckbox,
+               highCheckbox,
+               mediumCheckbox,
+               lowCheckbox,
+               normalCheckbox)
+     })
+
+     $('#hs-dropdown-item-checkbox-high').addEventListener('change', (event) => {
+        search(event,
+               doneCheckbox,
+               notDoneCheckbox,
+               highCheckbox,
+               mediumCheckbox,
+               lowCheckbox,
+               normalCheckbox)
+     })
+
+     $('#hs-dropdown-item-checkbox-medium').addEventListener('change', (event) => {
+        search(event,
+               doneCheckbox,
+               notDoneCheckbox,
+               highCheckbox,
+               mediumCheckbox,
+               lowCheckbox,
+               normalCheckbox)
+     })
+
+     $('#hs-dropdown-item-checkbox-low').addEventListener('change', (event) => {
+        search(event,
+               doneCheckbox,
+               notDoneCheckbox,
+               highCheckbox,
+               mediumCheckbox,
+               lowCheckbox,
+               normalCheckbox)
+     })
+
+     $('#hs-dropdown-item-checkbox-normal').addEventListener('change', (event) => {
+        search(event,
+               doneCheckbox,
+               notDoneCheckbox,
+               highCheckbox,
+               mediumCheckbox,
+               lowCheckbox,
+               normalCheckbox)
+     })
+}
+
+function search(event,
+                doneCheckbox,
+                notDoneCheckbox,
+                highCheckbox,
+                mediumCheckbox,
+                lowCheckbox,
+                normalCheckbox) {
+    event.preventDefault()
+    document.querySelector('.todo').innerHTML = ''
+    const inputFilter = document.querySelector('#search-input').value
+    Todos.load(inputFilter, 
+                notDoneCheckbox.checked,
+                doneCheckbox.checked,
+                highCheckbox.checked,
+                mediumCheckbox.checked,
+                lowCheckbox.checked,
+                normalCheckbox.checked);
+
 }
 
 export default { create }
