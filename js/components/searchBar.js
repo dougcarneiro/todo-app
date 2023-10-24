@@ -12,10 +12,10 @@ function create() {
                 </svg>
             </button>
 
-            <div class="z-[99] hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2" aria-labelledby="hs-dropdown-item-checkbox">
+            <div id="search-filter-checkbox" class="z-[99] hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2" aria-labelledby="hs-dropdown-item-checkbox">
                 <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
-                        <input id="hs-dropdown-item-checkbox-done" name="hs-dropdown-item-checkbox-done" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-done-description">
+                        <input id="hs-dropdown-item-checkbox-done" name="hs-dropdown-item-checkbox-done" type="checkbox" class="done-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-done-description">
                     </div>
                     <label for="hs-dropdown-item-checkbox-done" class="ml-3.5">
                     <span class="block text-sm font-semibold text-violet-800">Feito</span>
@@ -24,7 +24,7 @@ function create() {
                 </div>
                 <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
-                        <input id="hs-dropdown-item-checkbox-not-done" name="hs-dropdown-item-checkbox-not-done" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-not-done-description">
+                        <input id="hs-dropdown-item-checkbox-not-done" name="hs-dropdown-item-checkbox" type="checkbox" class="notDone-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-description">
                     </div>
                     <label for="hs-dropdown-item-checkbox-not-done" class="ml-3.5">
                     <span class="block text-sm font-semibold text-violet-800">Não Feitos</span>
@@ -33,7 +33,7 @@ function create() {
                 </div>
                 <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
-                        <input id="hs-dropdown-item-checkbox-high" name="hs-dropdown-item-checkbox-high" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-high-description">
+                        <input id="hs-dropdown-item-checkbox-high" name="hs-dropdown-item-checkbox-high" type="checkbox" class="high-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-high-description">
                     </div>
                     <label for="hs-dropdown-item-checkbox-high" class="ml-3.5">
                     <span class="block text-sm font-semibold text-violet-800">Prioridade Alta</span>
@@ -42,7 +42,7 @@ function create() {
                 </div>
                 <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
-                        <input id="hs-dropdown-item-checkbox-medium" name="hs-dropdown-item-checkbox-medium" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-medium-description">
+                        <input id="hs-dropdown-item-checkbox-medium" name="hs-dropdown-item-checkbox-medium" type="checkbox" class="medium-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-medium-description">
                     </div>
                     <label for="hs-dropdown-item-checkbox-medium" class="ml-3.5">
                     <span class="block text-sm font-semibold text-violet-800">Prioridade Média</span>
@@ -51,16 +51,16 @@ function create() {
                 </div>
                 <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
-                        <input id="hs-dropdown-item-checkbox-low" name="hs-dropdown-item-checkbox-low" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-low-description">
+                        <input id="hs-dropdown-item-checkbox-light" name="hs-dropdown-item-checkbox-light" type="checkbox" class="light-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-light-description">
                     </div>
-                    <label for="hs-dropdown-item-checkbox-low" class="ml-3.5">
+                    <label for="hs-dropdown-item-checkbox-light" class="ml-3.5">
                     <span class="block text-sm font-semibold text-violet-800">Prioridade Baixa</span>
-                    <span id="hs-dropdown-item-checkbox-low-description" class="block text-sm text-violet-600">Afazeres de baixa prioridade</span>
+                    <span id="hs-dropdown-item-checkbox-light-description" class="block text-sm text-violet-600">Afazeres de baixa prioridade</span>
                     </label>
                 </div>
                 <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
-                        <input id="hs-dropdown-item-checkbox-normal" name="hs-dropdown-item-checkbox-normal" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-normal-description">
+                        <input id="hs-dropdown-item-checkbox-normal" name="hs-dropdown-item-checkbox-normal" type="checkbox" class="normal-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-normal-description">
                     </div>
                     <label for="hs-dropdown-item-checkbox-normal" class="ml-3.5">
                     <span class="block text-sm font-semibold text-violet-800">Prioridade Normal</span>
@@ -93,80 +93,31 @@ function create() {
     `
     $('.container').insertAdjacentHTML('beforebegin', searchComponent);
 
-    const doneCheckbox = $('#hs-dropdown-item-checkbox-done')
-    const notDoneCheckbox = $('#hs-dropdown-item-checkbox-not-done')
-    const highCheckbox = $('#hs-dropdown-item-checkbox-high')
-    const mediumCheckbox = $('#hs-dropdown-item-checkbox-medium')
-    const lowCheckbox = $('#hs-dropdown-item-checkbox-low')
-    const normalCheckbox = $('#hs-dropdown-item-checkbox-normal')
+    const doneCheckbox = $('.done-checkbox')
+    const notDoneCheckbox = $('.notDone-checkbox')
+    const highCheckbox = $('.high-checkbox')
+    const mediumCheckbox = $('.medium-checkbox')
+    const lightCheckbox = $('.light-checkbox')
+    const normalCheckbox = $('.normal-checkbox')
 
     $('#search-button').addEventListener('click', (event) => {
+        
        search(event,
               doneCheckbox,
               notDoneCheckbox,
               highCheckbox,
               mediumCheckbox,
-              lowCheckbox,
+              lightCheckbox,
               normalCheckbox)
     })
 
-    $('#hs-dropdown-item-checkbox-done').addEventListener('change', (event) => {
+    $('#search-filter-checkbox').addEventListener('change', (event) => {
         search(event,
                doneCheckbox,
                notDoneCheckbox,
                highCheckbox,
                mediumCheckbox,
-               lowCheckbox,
-               normalCheckbox)
-     })
-
-     $('#hs-dropdown-item-checkbox-not-done').addEventListener('change', (event) => {
-        search(event,
-               doneCheckbox,
-               notDoneCheckbox,
-               highCheckbox,
-               mediumCheckbox,
-               lowCheckbox,
-               normalCheckbox)
-     })
-
-     $('#hs-dropdown-item-checkbox-high').addEventListener('change', (event) => {
-        search(event,
-               doneCheckbox,
-               notDoneCheckbox,
-               highCheckbox,
-               mediumCheckbox,
-               lowCheckbox,
-               normalCheckbox)
-     })
-
-     $('#hs-dropdown-item-checkbox-medium').addEventListener('change', (event) => {
-        search(event,
-               doneCheckbox,
-               notDoneCheckbox,
-               highCheckbox,
-               mediumCheckbox,
-               lowCheckbox,
-               normalCheckbox)
-     })
-
-     $('#hs-dropdown-item-checkbox-low').addEventListener('change', (event) => {
-        search(event,
-               doneCheckbox,
-               notDoneCheckbox,
-               highCheckbox,
-               mediumCheckbox,
-               lowCheckbox,
-               normalCheckbox)
-     })
-
-     $('#hs-dropdown-item-checkbox-normal').addEventListener('change', (event) => {
-        search(event,
-               doneCheckbox,
-               notDoneCheckbox,
-               highCheckbox,
-               mediumCheckbox,
-               lowCheckbox,
+               lightCheckbox,
                normalCheckbox)
      })
 }
@@ -176,7 +127,7 @@ function search(event,
                 notDoneCheckbox,
                 highCheckbox,
                 mediumCheckbox,
-                lowCheckbox,
+                lightCheckbox,
                 normalCheckbox) {
     event.preventDefault()
     document.querySelector('.todo').innerHTML = ''
@@ -186,7 +137,7 @@ function search(event,
                 doneCheckbox.checked,
                 highCheckbox.checked,
                 mediumCheckbox.checked,
-                lowCheckbox.checked,
+                lightCheckbox.checked,
                 normalCheckbox.checked);
 
 }

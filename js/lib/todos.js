@@ -8,7 +8,7 @@ function load(title,
               done=undefined,
               high=undefined,
               medium=undefined,
-              low=undefined,
+              light=undefined,
               normal=undefined) {
   let todos = Storage.read('todos');
   if (title){
@@ -35,7 +35,7 @@ function load(title,
   let todosNormal = []
   let filteredTodos = []
 
-  if (high || medium || low || normal) {
+  if (high || medium || light || normal) {
 
       if (high) {
         todosHigh = todos.filter((todo) =>
@@ -49,7 +49,7 @@ function load(title,
         );
       }
     
-      if (low) {
+      if (light) {
         todosLow = todos.filter((todo) =>
         todo.priority === 'light'
         );
