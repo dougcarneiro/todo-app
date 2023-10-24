@@ -2,7 +2,6 @@ import Todos from '../lib/todos';
 import TodoForm from './TodoForm';
 import { $ } from '../lib/dom';
 import { formatDate } from '../lib/format';
-import Storage from '../services/storage';
 
 const background = {
   normal: 'bg-white',
@@ -90,14 +89,14 @@ function create(todo) {
   }
  
   $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).onchange = () => {
-    const updatedTodo = Storage.read('todos', todo.id)
+    const updatedTodo = Todos.get(todo.id)
     updatedTodo.is_completed = $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).checked
     Todos.update(updatedTodo)
   }
 
   $(`#todo-${todo.id} .icon-pencil`).onclick = () => {
     $('#form-title').textContent = 'Alterar Afazer'
-    const TodoToUpdate = Storage.read('todos', todo.id)
+    const TodoToUpdate = Todos.get(todo.id)
     TodoForm.setValues(TodoToUpdate);
     TodoForm.handleSubmit();
   };

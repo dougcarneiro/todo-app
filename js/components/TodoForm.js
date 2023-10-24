@@ -30,9 +30,13 @@ function setValues({
 function getValues() {
   const todo = Object.fromEntries(new FormData($('#todo-form')));
 
+  let created_at = Todos.get(todo.id).created_at
+
   let date = ''
 
-  const created_at = new Date().toISOString();
+  if (!created_at) {
+    created_at = new Date().toISOString();
+  }
   if (!todo.date) {
     date = created_at;
   } else {

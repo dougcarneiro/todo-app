@@ -77,6 +77,10 @@ function load(title,
 }
 
 
+function get(id) {
+  return Storage.read('todos', id)
+}
+
 
 function create(todo) {
   delete todo.id;
@@ -103,4 +107,4 @@ function remove(todo) {
   TodoCard.remove(id);
 }
 
-export default { load, create, update, remove };
+export default { load, get, create, update, remove };
