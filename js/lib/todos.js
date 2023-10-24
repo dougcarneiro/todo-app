@@ -1,7 +1,7 @@
 import TodoCard from '../components/TodoCard';
 import Storage from '../services/storage';
 import { $ } from './dom';
-import { orderByDate } from './orderByDate';
+import { orderByDate } from './orderByCreatedAt';
 
 function load(title, 
               notDone=undefined, 
@@ -71,7 +71,7 @@ function load(title,
     $('.container h2').innerText = 'Nenhum afazer encontrado.'
   } else {
     $('.container h2').innerText = ''
-    orderByDate(todos)
+    orderByDate(todos, 'desc')
     todos.map(TodoCard.create);
   }
 }
