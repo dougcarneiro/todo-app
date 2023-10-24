@@ -4,27 +4,109 @@ import Todos from '../lib/todos';
 
 function create() {
     const searchBar = `
-<form id="search-bar" class="flex items-center justify-center">   
-    <div class="relative w-1/2 my-8">
-        <div class=""/>
+<div class="flex items-center justify-center">
+    <div id="filters" class="hs-dropdown" data-hs-dropdown-auto-close="inside">
+        <button id="hs-dropdown-item-checkbox" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-violet-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm">
+        Filtros
+            <svg class="hs-dropdown-open:rotate-180 w-2.5 h-2.5 text-violet-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <div class="z-[99] hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2" aria-labelledby="hs-dropdown-item-checkbox">
+            <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+                <div class="flex items-center h-5 mt-1">
+                    <input id="hs-dropdown-item-checkbox-done" name="hs-dropdown-item-checkbox-done" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-done-description">
+                </div>
+                <label for="hs-dropdown-item-checkbox-done" class="ml-3.5">
+                <span class="block text-sm font-semibold text-violet-800">Feito</span>
+                <span id="hs-dropdown-item-checkbox-done-description" class="block text-sm text-violet-600">Afazeres finalizados</span>
+                </label>
+            </div>
+        <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+            <div class="flex items-center h-5 mt-1">
+                <input id="hs-dropdown-item-checkbox-not-done" name="hs-dropdown-item-checkbox-not-done" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-not-done-description">
+            </div>
+            <label for="hs-dropdown-item-checkbox-not-done" class="ml-3.5">
+            <span class="block text-sm font-semibold text-violet-800">Não Feitos</span>
+            <span id="hs-dropdown-item-checkbox-not-done-description" class="block text-sm text-violet-600">Afazeres pendentes</span>
+            </label>
         </div>
-        <input type="text" id="search-input" class="bg-white rounded-full text-violet-900 text-md hover:outline-none hover:ring-2 hover:ring-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 text-md block w-full pl-10 p-2.5" placeholder="Busque por um afazer..." required>
+        <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+            <div class="flex items-center h-5 mt-1">
+                <input id="hs-dropdown-item-checkbox-high" name="hs-dropdown-item-checkbox-high" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-high-description">
+            </div>
+            <label for="hs-dropdown-item-checkbox-high" class="ml-3.5">
+            <span class="block text-sm font-semibold text-violet-800">Prioridade Alta</span>
+            <span id="hs-dropdown-item-checkbox-high-description" class="block text-sm text-violet-600">Afazeres de alta prioridade</span>
+            </label>
+        </div>
+        <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+            <div class="flex items-center h-5 mt-1">
+                <input id="hs-dropdown-item-checkbox-medium" name="hs-dropdown-item-checkbox-medium" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-medium-description">
+            </div>
+            <label for="hs-dropdown-item-checkbox-medium" class="ml-3.5">
+            <span class="block text-sm font-semibold text-violet-800">Prioridade Média</span>
+            <span id="hs-dropdown-item-checkbox-medium-description" class="block text-sm text-violet-600">Afazeres de média prioridade</span>
+            </label>
+        </div>
+        <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+            <div class="flex items-center h-5 mt-1">
+                <input id="hs-dropdown-item-checkbox-low" name="hs-dropdown-item-checkbox-low" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-low-description">
+            </div>
+            <label for="hs-dropdown-item-checkbox-low" class="ml-3.5">
+            <span class="block text-sm font-semibold text-violet-800">Prioridade Baixa</span>
+            <span id="hs-dropdown-item-checkbox-low-description" class="block text-sm text-violet-600">Afazeres de baixa prioridade</span>
+            </label>
+        </div>
+        <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+            <div class="flex items-center h-5 mt-1">
+                <input id="hs-dropdown-item-checkbox-normal" name="hs-dropdown-item-checkbox-normal" type="checkbox" class="border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-normal-description">
+            </div>
+            <label for="hs-dropdown-item-checkbox-normal" class="ml-3.5">
+            <span class="block text-sm font-semibold text-violet-800">Prioridade Normal</span>
+            <span id="hs-dropdown-item-checkbox-normal-description" class="block text-sm text-violet-600">Afazeres de prioridade normal</span>
+            </label>
+        </div>
     </div>
-    <button id="search-button" type="submit" class="p-2.5 ml-2 text-md font-medium rounded-full bg-violet-500 text-white hover:bg-violet-600 hover:outline-none hover:ring-2 hover:ring-violet-500 hover:ring-offset-2 transition-all text-md">
-        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-        </svg>
-        <span class="sr-only">Search</span>
-    </button>
-</form>
+        
+    </div>
+    <form id="search-bar" class="mx-2 flex items-center justify-center w-1/3">   
+        <div class="relative w-full my-8">
+            <div class=""/>
+            </div>
+            <input type="text" id="search-input" class="bg-white rounded-md text-violet-900 text-md hover:outline-none hover:ring-2 hover:ring-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 text-md block w-full pl-10 p-2.5" placeholder="Busque por um afazer..." required>
+        </div>
+        <button id="search-button" type="submit" class="p-2.5 ml-2 text-md font-medium rounded-full bg-violet-500 text-white hover:bg-violet-600 hover:outline-none hover:ring-2 hover:ring-violet-500 hover:ring-offset-2 transition-all text-md">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+            <span class="sr-only">Search</span>
+        </button>
+    </form>
+</div>
+
 `
     $('.container').insertAdjacentHTML('beforebegin', searchBar);
+
+    const doneCheckbox = $('#hs-dropdown-item-checkbox-done')
+    const notDoneCheckbox = $('#hs-dropdown-item-checkbox-not-done')
+    const highCheckbox = $('#hs-dropdown-item-checkbox-high')
+    const mediumCheckbox = $('#hs-dropdown-item-checkbox-medium')
+    const lowCheckbox = $('#hs-dropdown-item-checkbox-low')
+    const normalCheckbox = $('#hs-dropdown-item-checkbox-normal')
 
     $('#search-button').addEventListener('click', (event) => {
         event.preventDefault();
         document.querySelector('.todo').innerHTML = ''
-        const searchInput = document.querySelector('#search-input').value
-        Todos.load(searchInput);
+        const inputFilter = document.querySelector('#search-input').value
+        Todos.load(inputFilter, 
+                   notDoneCheckbox.checked,
+                   doneCheckbox.checked,
+                   highCheckbox.checked,
+                   mediumCheckbox.checked,
+                   lowCheckbox.checked,
+                   normalCheckbox.checked);
     })
 }
 

@@ -2,13 +2,69 @@ import TodoCard from '../components/TodoCard';
 import Storage from '../services/storage';
 import { $ } from '../lib/dom';
 
-function load(filter) {
+function load(title, 
+              notDone=undefined, 
+              done=undefined,
+              high=undefined,
+              medium=undefined,
+              low=undefined,
+              normal=undefined) {
   let todos = Storage.read('todos');
-  if (filter){
-    todos = todos.filter((todos) =>
-    todos.title.toLowerCase().includes(filter.toLowerCase())
+  if (title){
+    todos = todos.filter((todo) =>
+    todo.title.toLowerCase().includes(title.toLowerCase())
     );
   }
+
+  if (notDone && !done) {
+    todos = todos.filter((todo) =>
+    !(todo.is_completed)
+    );
+  }
+
+  if (done && !notDone) {
+    todos = todos.filter((todo) =>
+    todo.is_completed
+    );
+  }
+
+  let todosHigh = []
+  let todosMedium = []
+  let todosLow = []
+  let todosNormal = []
+  let filteredTodos = []
+
+  if (high || medium || low || normal) {
+
+      if (high) {
+        todosHigh = todos.filter((todo) =>
+        todo.priority === 'high'
+        );
+      }
+    
+      if (medium) {
+        todosMedium = todos.filter((todo) =>
+        todo.priority === 'medium'
+        );
+      }
+    
+      if (low) {
+        todosLow = todos.filter((todo) =>
+        todo.priority === 'light'
+        );
+      }
+    
+      if (normal) {
+        todosNormal = todos.filter((todo) => 
+          todo.priority === 'normal'
+        );
+      }
+    
+      filteredTodos = [...todosHigh, ...todosMedium, ...todosLow, ...todosNormal]
+      
+      todos = filteredTodos
+  }
+
   if (todos.length == 0) {
     $('.container h2').innerText = 'Nenhum afazer encontrado.'
   } else {
