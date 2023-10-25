@@ -101,44 +101,24 @@ function create() {
     const normalCheckbox = $('.normal-checkbox')
 
     $('#search-button').addEventListener('click', (event) => {
-        
-       search(event,
-              doneCheckbox,
-              notDoneCheckbox,
-              highCheckbox,
-              mediumCheckbox,
-              lightCheckbox,
-              normalCheckbox)
+       search(event, doneCheckbox, notDoneCheckbox, highCheckbox, mediumCheckbox, lightCheckbox, normalCheckbox)
     })
 
+    $('#search-filter-checkbox').addEventListener('click', (event) => {
+        event.stopPropagation()
+     })
+
     $('#search-filter-checkbox').addEventListener('change', (event) => {
-        search(event,
-               doneCheckbox,
-               notDoneCheckbox,
-               highCheckbox,
-               mediumCheckbox,
-               lightCheckbox,
-               normalCheckbox)
+        search(event, doneCheckbox, notDoneCheckbox, highCheckbox, mediumCheckbox, lightCheckbox, normalCheckbox)
      })
 }
 
-function search(event,
-                doneCheckbox,
-                notDoneCheckbox,
-                highCheckbox,
-                mediumCheckbox,
-                lightCheckbox,
-                normalCheckbox) {
+function search(event, doneCheckbox, notDoneCheckbox, highCheckbox, mediumCheckbox, lightCheckbox, normalCheckbox) {
     event.preventDefault()
     document.querySelector('.todo').innerHTML = ''
     const inputFilter = document.querySelector('#search-input').value
-    Todos.load(inputFilter, 
-                notDoneCheckbox.checked,
-                doneCheckbox.checked,
-                highCheckbox.checked,
-                mediumCheckbox.checked,
-                lightCheckbox.checked,
-                normalCheckbox.checked);
+    Todos.load(inputFilter, notDoneCheckbox.checked, doneCheckbox.checked,
+         highCheckbox.checked, mediumCheckbox.checked, lightCheckbox.checked, normalCheckbox.checked);
 
 }
 
