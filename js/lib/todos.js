@@ -68,9 +68,9 @@ function load(title,
   }
   
   if (todos.length == 0) {
-    $('.container h2').innerText = 'Nenhum afazer encontrado.'
+    $('#not-found-todo').innerText = 'Nenhum afazer encontrado.'
   } else {
-    $('.container h2').innerText = ''
+    $('#not-found-todo').innerText = ''
     orderByDate(todos, 'desc')
     todos.map(TodoCard.create);
   }
