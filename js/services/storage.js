@@ -18,20 +18,20 @@ function storageSelect(key, isJSON = true) {
   return value;
 }
 
-function load(resourse, data) {
+function loadSeed(resource, data) {
   if (storageSelect('loaded', false) !== 'ok') {
-    storageInsert(resourse, data);
+    storageInsert(resource, data);
 
     storageInsert('loaded', 'ok');
   }
 }
 
-function create(resourse, value) {
-  const values = storageSelect(resourse);
+function create(resource, value) {
+  const values = storageSelect(resource);
 
   value = { ...value, id: uuidv4() };
 
-  storageInsert(resourse, [...values, value]);
+  storageInsert(resource, [...values, value]);
 
   return value;
 }
@@ -80,4 +80,4 @@ function remove(resourse, id) {
   storageInsert(resourse, values);
 }
 
-export default { load, create, read, update, remove };
+export default { loadSeed, create, read, update, remove };

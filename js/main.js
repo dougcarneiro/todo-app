@@ -5,7 +5,7 @@ import TodoForm from './components/TodoForm';
 import Modal from './components/Modal';
 import Todos from './lib/todos';
 import Storage from './services/storage';
-import { todos } from './data/seed';
+import { seed } from './data/seed';
 import Search from './components/searchBar';
 
 import '../css/style.css';
@@ -13,7 +13,7 @@ import '../css/style.css';
 
 let searchInput = ''
 
-Storage.load('todos', todos);
+Storage.loadSeed('todos', seed);
 
 Todos.load(searchInput);
 

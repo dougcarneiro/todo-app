@@ -1,4 +1,4 @@
-export const todos = [
+export const seed = [
     {
       id: 'b9f2414d-b8dd-484d-8179-83383d10a3fd',
       title: 'Primeiro Afazer',
