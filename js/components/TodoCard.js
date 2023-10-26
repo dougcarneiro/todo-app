@@ -14,7 +14,7 @@ function create(todo) {
   const card = `
     <div
       id="todo-${todo.id}"
-      class="shadow-md rounded-lg p-4 relative"
+      class="shadow-md rounded-lg p-4 relative overflow-y-auto"
     >
     <div class="mb-5 w-full flex justify-end mt-1">
         <span class="mr-2 text-sm font-extrabold text-violet-900">Feito</span>
