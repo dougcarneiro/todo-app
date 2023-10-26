@@ -93,11 +93,11 @@ function create() {
         <select
           name="priority"
           id="priority"
-          class="w-full py-2 px-4 border border-gray-200 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
-          <option value="normal" class="text-violet-800">Normal</option>
-          <option value="light" class="text-violet-800">Leve</option>
-          <option value="medium" class="text-violet-800">Média</option>
-          <option value="high" class="text-violet-800">Alta</option>
+          class="text-violet-800 w-full py-2 px-4 border border-gray-200 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+          <option value="normal">Normal</option>
+          <option value="light">Leve</option>
+          <option value="medium">Média</option>
+          <option value="high">Alta</option>
         </select>
       </div>
       <div class="mb-3">
@@ -198,6 +198,8 @@ function create() {
 
 function handleSubmit() {
   const form = $('#todo-form')
+  $('#title').value = $('#title').value.trim()
+  $('#text').value = $('#text').value.trim()
   form.onsubmit = async (event) => {
     event.preventDefault();
 

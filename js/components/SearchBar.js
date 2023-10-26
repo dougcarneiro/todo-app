@@ -117,7 +117,11 @@ function create() {
 
 function search(event, checkboxes = {}) {
     event.preventDefault()
-    const inputFilter = document.querySelector('#search-input').value
+    const searchInput = document.querySelector('#search-input')
+
+    const inputFilter = searchInput.value.trim()
+    searchInput.value = inputFilter
+    
     const options = {
         title: inputFilter,
         notDone: checkboxes.notDoneCheckbox.checked,
