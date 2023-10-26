@@ -3,14 +3,19 @@ import Storage from '../services/storage';
 import { $ } from './dom';
 import { orderByDate } from './orderByCreatedAt';
 
-function load(title, 
-              notDone=undefined, 
-              done=undefined,
-              high=undefined,
-              medium=undefined,
-              light=undefined,
-              normal=undefined,
-              search=false) {
+function load(options = {}) {
+  
+  const {
+    title = '',
+    notDone = false,
+    done = false,
+    high = false,
+    medium = false,
+    light = false,
+    normal = false,
+    search = false
+  } = options;
+
   document.querySelector('.todo').innerHTML = ''
   let todos = Storage.read('todos');
   if (title){

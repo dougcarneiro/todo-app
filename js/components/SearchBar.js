@@ -93,15 +93,17 @@ function create() {
     `
     $('.container').insertAdjacentHTML('beforebegin', searchComponent);
 
-    const doneCheckbox = $('.done-checkbox')
-    const notDoneCheckbox = $('.notDone-checkbox')
-    const highCheckbox = $('.high-checkbox')
-    const mediumCheckbox = $('.medium-checkbox')
-    const lightCheckbox = $('.light-checkbox')
-    const normalCheckbox = $('.normal-checkbox')
+    const checkboxes = {
+        doneCheckbox: $('.done-checkbox'),
+        notDoneCheckbox: $('.notDone-checkbox'),
+        highCheckbox: $('.high-checkbox'),
+        mediumCheckbox: $('.medium-checkbox'),
+        lightCheckbox: $('.light-checkbox'),
+        normalCheckbox: $('.normal-checkbox'),
+    }
 
     $('#search-button').addEventListener('click', (event) => {
-       search(event, doneCheckbox, notDoneCheckbox, highCheckbox, mediumCheckbox, lightCheckbox, normalCheckbox)
+       search(event, checkboxes)
     })
 
     $('#search-filter-checkbox').addEventListener('click', (event) => {
@@ -109,16 +111,24 @@ function create() {
      })
 
     $('#search-filter-checkbox').addEventListener('change', (event) => {
-        search(event, doneCheckbox, notDoneCheckbox, highCheckbox, mediumCheckbox, lightCheckbox, normalCheckbox)
+        search(event, checkboxes)
      })
 }
 
-function search(event, doneCheckbox, notDoneCheckbox, highCheckbox, mediumCheckbox, lightCheckbox, normalCheckbox) {
+function search(event, checkboxes = {}) {
     event.preventDefault()
     const inputFilter = document.querySelector('#search-input').value
-    Todos.load(inputFilter, notDoneCheckbox.checked, doneCheckbox.checked,
-                highCheckbox.checked, mediumCheckbox.checked, lightCheckbox.checked,
-                normalCheckbox.checked, true);
+    const options = {
+        title: inputFilter,
+        notDone: checkboxes.notDoneCheckbox.checked,
+        done: checkboxes.doneCheckbox.checked,
+        high: checkboxes.highCheckbox.checked,
+        medium: checkboxes.mediumCheckbox.checked,
+        light: checkboxes.lightCheckbox.checked,
+        normal: checkboxes.normalCheckbox.checked,
+        search: true,
+    }
+    Todos.load(options);
 
 }
 
