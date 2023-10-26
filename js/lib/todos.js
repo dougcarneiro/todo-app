@@ -9,7 +9,9 @@ function load(title,
               high=undefined,
               medium=undefined,
               light=undefined,
-              normal=undefined) {
+              normal=undefined,
+              search=false) {
+  document.querySelector('.todo').innerHTML = ''
   let todos = Storage.read('todos');
   if (title){
     todos = todos.filter((todo) =>
@@ -66,9 +68,9 @@ function load(title,
       todos = filteredTodos
 
   }
-  
+  const notFoundMsg = search ? 'Nenhum afazer encontrado.' : 'Você não possui nenhum afazer.'
   if (todos.length == 0) {
-    $('#not-found-todo').innerText = 'Nenhum afazer encontrado.'
+    $('#not-found-todo').innerText = notFoundMsg
   } else {
     $('#not-found-todo').innerText = ''
     orderByDate(todos, 'desc')
@@ -105,6 +107,8 @@ function remove(todo) {
   Storage.remove('todos', id);
 
   TodoCard.remove(id);
+
+  load()
 }
 
 export default { load, get, create, update, remove };
