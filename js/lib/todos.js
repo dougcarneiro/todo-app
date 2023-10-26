@@ -89,6 +89,8 @@ function create(todo) {
   const createdTodo = Storage.create('todos', todo);
 
   TodoCard.create(createdTodo);
+
+  load()
 }
 
 function update(todo) {
