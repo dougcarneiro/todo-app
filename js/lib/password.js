@@ -1,10 +1,10 @@
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 
 export function encryptPass(pass) {
     const saltRounds = 10;
-    return bcrypt.hashSync(pass, saltRounds);
+    return bcryptjs.hashSync(pass, saltRounds);
 }
 
 export function comparePass(pass, hash) {
-    return bcrypt.compareSync(pass, hash)
+    return bcryptjs.compareSync(pass, hash)
 }

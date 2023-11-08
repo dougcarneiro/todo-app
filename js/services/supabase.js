@@ -1,15 +1,29 @@
-import 'dotenv/config'
 import { createClient } from '@supabase/supabase-js'
-import { encryptPass } from '../lib/password.js'
+import { encryptPass, comparePass } from '../lib/password.js'
 
 
-const supabase = createClient(
-    process.env.SUPABASE_PROJECT_URL,
-    process.env.SUPABASE_API_SECRET_KEY)
+const SUPABASE_PROJECT_URL = import.meta.env.VITE_SUPABASE_PROJECT_URL
+const SUPABASE_API_SECRET_KEY = import.meta.env.VITE_SUPABASE_API_SECRET_KEY
+
+const supabase = createClient(SUPABASE_PROJECT_URL, SUPABASE_API_SECRET_KEY)
 
 const USER_SELECT = 'id, name, email, confirmed_email, last_access'
+const USER_SELECT_PASS = USER_SELECT + ', password'
 
 // USER
+export async function login(email, password) {
+    const { data } = await getUserByEmail(email)
+    const user = data[0]
+    if (user) {
+        if (comparePass(password, user.password)) {
+            delete user.password
+            return user
+        } else {
+            return false
+        }
+    }
+}
+
 export async function getAllUsers() {
     return await supabase.from('User')
                             .select(USER_SELECT) 
@@ -17,8 +31,14 @@ export async function getAllUsers() {
 
 export async function getUserById(id) {
     return await supabase.from('User')
-                            .select(USER_SELECT)
+                            .select(USER_SELECT_PASS)
                             .eq('id', id)
+}
+
+export async function getUserByEmail(email) {
+    return await supabase.from('User')
+                            .select(USER_SELECT_PASS)
+                            .eq('email', email)
 }
 
 export async function createUser(user) {

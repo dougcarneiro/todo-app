@@ -72,7 +72,7 @@ function create() {
           type="text"
           id="title"
           name="title"
-          class="mt-1 mb-1 w-full py-3 px-4 block border border-violet-200 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+          class="mt-1 mb-1 w-full py-3 px-4 block border text-violet-800 border-violet-200 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
       </div>
       <div class="mt-4">
         <label
@@ -81,7 +81,7 @@ function create() {
         >
           Texto
         </label>
-        <textarea required maxlength="300" id="text" name="text" rows="4" class=" w-full block p-2.5 text-lg text-violet-900 bg-violet-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-violet-500 " placeholder="Descreva o seu afazer..."></textarea>
+        <textarea required maxlength="300" id="text" name="text" rows="4" class=" w-full block p-2.5 text-lg text-violet-900 bg-violet-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-violet-500 placeholder-violet-400" placeholder="Descreva o seu afazer..."></textarea>
       </div>
 
       <div>
