@@ -7,64 +7,76 @@ const SUPABASE_API_SECRET_KEY = import.meta.env.VITE_SUPABASE_API_SECRET_KEY
 
 const supabase = createClient(SUPABASE_PROJECT_URL, SUPABASE_API_SECRET_KEY)
 
-const USER_SELECT = 'id, name, email, confirmed_email, last_access'
-const USER_SELECT_PASS = USER_SELECT + ', password'
+const PROFILE_SELECT = 'id, name, user_id, email'
 
-// USER
-export async function login(email, password) {
-    const { data } = await getUserByEmail(email)
-    const user = data[0]
-    if (user) {
-        if (comparePass(password, user.password)) {
-            delete user.password
-            return user
-        } else {
-            return false
-        }
-    }
+
+// PROFILE
+export async function getAllProfiles() {
+    return await supabase.from('Profile')
+                            .select(PROFILE_SELECT) 
 }
 
-export async function getAllUsers() {
-    return await supabase.from('User')
-                            .select(USER_SELECT) 
-}
-
-export async function getUserById(id) {
-    return await supabase.from('User')
-                            .select(USER_SELECT_PASS)
+export async function getProfileById(id) {
+    return await supabase.from('Profile')
+                            .select(PROFILE_SELECT)
                             .eq('id', id)
 }
 
-export async function getUserByEmail(email) {
-    return await supabase.from('User')
-                            .select(USER_SELECT_PASS)
+export async function getProfileByEmail(email) {
+    return await supabase.from('Profile')
+                            .select(PROFILE_SELECT)
                             .eq('email', email)
 }
 
-export async function createUser(user) {
-    user.password = encryptPass(user.password)
-    return await supabase.from('User')
-                            .insert({ ...user })
-                            .select(USER_SELECT) 
+export async function createProfile(profile) {
+    return await supabase.from('Profile')
+                            .insert({ ...profile })
+                            .select(PROFILE_SELECT)
 }
 
-export async function updateUser(user) {
-    return await supabase.from('User')
-                            .update({...user})
-                            .eq('id', user.id)
-                            .select(USER_SELECT)
+export async function updateProfile(profile) {
+    return await supabase.from('Profile')
+                            .update({...profile})
+                            .eq('id', profile.id)
+                            .select(PROFILE_SELECT)
 }
 
 // USER MANAGEMENT SUPABASE PROVIDED
 export async function signUp(user) {
-    return await supabase.auth.signUp({ ...user })
+    const existingUser = await getProfileByEmail(user.email)
+    if (existingUser.data[0]) {
+        return false
+    }
+    const { data, error } = await supabase.auth.signUp({ ...user })
+    const created_user = data.user
+    if (created_user) {
+        const profile = {
+            name: user.name,
+            user_id: created_user.id,
+            email: user.email,
+            password: created_user.encrypted_password
+        }
+        const { data, error } = await createProfile(profile)
+        return {data, error}
+    } else {
+        return error
+    }
 }
 
 export async function singIn(email, password) {
-    return await supabase.auth.signInWithPassword({
+    const existingUser = await getProfileByEmail(email)
+    if (!existingUser.data[0]) {
+        return false
+    }
+    const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password
     })
+    if (data.user) {
+        return existingUser
+    } else {
+        return false
+    }
 } 
 
 export async function recoverPass(email) {

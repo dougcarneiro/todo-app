@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
+import { getProfileById } from './supabase';
+import { decodeJWT } from './jwt';
 
 function storageInsert(key, value) {
   if (typeof value === 'object') {
@@ -36,22 +38,24 @@ function create(resource, value) {
   return value;
 }
 
-function read(resourse, id) {
+function read(resource, id) {
   const str = ''
-  const values = storageSelect(resourse);
+  const values = storageSelect(resource);
 
   if (id) {
     return values.find((value) => value.id === id);
   } else {
-    const filteredValues = values.filter((value) =>
-    value.title.toLowerCase().includes(str.toLowerCase())
-  );
+    if (values) {
+      const filteredValues = values.filter((value) =>
+      value.title.toLowerCase().includes(str.toLowerCase())
+    );
     return filteredValues;
+    } return
   }
 }
 
-function update(resourse, id, value) {
-  const values = storageSelect(resourse);
+function update(resource, id, value) {
+  const values = storageSelect(resource);
 
   const index = values.findIndex((value) => value.id === id);
 
@@ -60,7 +64,7 @@ function update(resourse, id, value) {
 
     values[index] = { ...values[index], ...value };
 
-    storageInsert(resourse, values);
+    storageInsert(resource, values);
 
     return value;
   } else {
@@ -68,8 +72,8 @@ function update(resourse, id, value) {
   }
 }
 
-function remove(resourse, id) {
-  const values = storageSelect(resourse);
+function remove(resource, id) {
+  const values = storageSelect(resource);
 
   const index = values.findIndex((value) => value.id === id);
 
@@ -77,7 +81,16 @@ function remove(resourse, id) {
     values.splice(index, 1);
   }
 
-  storageInsert(resourse, values);
+  storageInsert(resource, values);
 }
 
-export default { loadSeed, create, read, update, remove };
+function getUserByJWT() {
+  const jwt = localStorage.getItem('@todo-app:jwt')
+  if (jwt) {
+    return decodeJWT(jwt).user
+  } else {
+    return false
+  }
+}
+
+export default { loadSeed, create, read, update, remove, getUserByJWT };

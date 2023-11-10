@@ -20,3 +20,7 @@ export async function verifyJWT(token) {
     return { payload, protectedHeader }
 }
 
+
+export function decodeJWT(token) {
+    return jose.decodeJwt(token)
+}

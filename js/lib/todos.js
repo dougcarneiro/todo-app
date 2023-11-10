@@ -74,7 +74,7 @@ function load(options = {}) {
 
   }
   const notFoundMsg = search ? 'Nenhum afazer encontrado.' : 'Você não possui nenhum afazer.'
-  if (todos.length == 0) {
+  if (!todos || todos.length == 0) {
     $('#not-found-todo').innerText = notFoundMsg
   } else {
     $('#not-found-todo').innerText = ''
