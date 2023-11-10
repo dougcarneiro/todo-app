@@ -4,4 +4,12 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [],
   base: '/todo-app/',
+  build: {
+    rollupOptions: {
+      input: {
+        main: ('./index.html'),
+        signIn: ('./sign-in.html'),
+      }
+    }
+  }
 })
