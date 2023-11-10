@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [],
   base: '/todo-app/',
   build: {
+    target: 'esnext',
     rollupOptions: {
       input: {
         main: ('./index.html'),
