@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-import { encryptPass, comparePass } from '../lib/password.js'
 
 
 const SUPABASE_PROJECT_URL = import.meta.env.VITE_SUPABASE_PROJECT_URL
