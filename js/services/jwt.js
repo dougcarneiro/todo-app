@@ -21,6 +21,13 @@ export async function verifyJWT(token) {
 }
 
 
-export function decodeJWT(token) {
-    return jose.decodeJwt(token)
+export async function decodeJWT(token) {
+    try {
+        const { payload, protectedHeader } = await verifyJWT(token)
+        if (payload.user) {
+            return payload
+        }
+    } catch (error) {
+        return false
+    }
 }

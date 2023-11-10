@@ -42,6 +42,13 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+        env:
+          VITE_SUPABASE_PROJECT_URL: ${{ secrets.VITE_SUPABASE_PROJECT_URL }}
+          VITE_SUPABASE_API_SECRET_KEY: ${{ secrets.VITE_SUPABASE_API_SECRET_KEY }}
+          VITE_SUPABASE_API_PUBLIC_KEY: ${{ secrets.VITE_SUPABASE_API_PUBLIC_KEY }}
+          VITE_JWT_SECRET: ${{ secrets.VITE_JWT_SECRET }}
+          VITE_JWT_SECRET_ALG: ${{ secrets.VITE_JWT_SECRET_ALG }}
+          VITE_JWT_EXPIRATION_TIME: ${{ secrets.VITE_JWT_EXPIRATION_TIME }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

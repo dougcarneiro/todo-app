@@ -19,7 +19,7 @@ Todos.load(searchInput);
 
 TodoForm.create();
 
-const user = Storage.getUserByJWT()
+const user = await Storage.getUserByJWT()
 
 if (user) {
     Profile.create(user);

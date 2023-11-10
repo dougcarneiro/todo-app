@@ -84,13 +84,16 @@ function remove(resource, id) {
   storageInsert(resource, values);
 }
 
-function getUserByJWT() {
+async function getUserByJWT() {
   const jwt = localStorage.getItem('@todo-app:jwt')
   if (jwt) {
-    return decodeJWT(jwt).user
-  } else {
-    return false
+    const payload = await decodeJWT(jwt)
+    if (payload.user) {
+      return payload.user[0]
+    }
   }
+  localStorage.removeItem('@todo-app:jwt')
+  return false
 }
 
 export default { loadSeed, create, read, update, remove, getUserByJWT };
