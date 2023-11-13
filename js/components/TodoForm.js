@@ -2,7 +2,7 @@ import Todos from '../lib/todos';
 import { $ } from '../lib/dom';
 import { formatDate } from '../lib/format';
 
-function setValues({
+async function setValues({
   id,
   title,
   text,
@@ -10,6 +10,7 @@ function setValues({
   is_completed,
   date,
 }) {
+
   const form = $('#todo-form');
 
   date = formatDate(date, 'ymd');
@@ -27,10 +28,10 @@ function setValues({
   form.date.value = date;
 }
 
-function getValues() {
+async function getValues() {
   const todo = Object.fromEntries(new FormData($('#todo-form')));
 
-  let created_at = Todos.get(todo.id).created_at
+  let created_at = await Todos.get(todo.id).created_at
 
   let date = ''
 
@@ -43,7 +44,7 @@ function getValues() {
     date = new Date(
       todo.date + 'T00:00:00-03:00'
     ).toISOString();
-  }
+  }  
   
   return { ...todo, date, created_at };
 }
@@ -184,8 +185,8 @@ function create() {
 
   $('.container').insertAdjacentHTML('afterend', addModal);
   
-  $('.submit-button').onclick = () => {
-    handleSubmit();
+  $('.submit-button').onclick = async () => {
+    await handleSubmit();
 
   };
 
@@ -196,7 +197,7 @@ function create() {
   }
 }
 
-function handleSubmit() {
+async function handleSubmit() {
   const form = $('#todo-form')
   $('#title').value = $('#title').value.trim()
   $('#text').value = $('#text').value.trim()
@@ -207,9 +208,9 @@ function handleSubmit() {
     $('div[data-hs-overlay-backdrop-template]').remove()
     document.body.removeAttribute("style");
 
-    const todo = getValues();
+    const todo = await getValues();
 
-    Todos.update(todo);
+    await Todos.update(todo);
   };
 }
 

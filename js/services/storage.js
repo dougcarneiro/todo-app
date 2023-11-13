@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import { getProfileById } from './supabase';
 import { decodeJWT } from './jwt';
 
 function storageInsert(key, value) {

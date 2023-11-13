@@ -97,30 +97,53 @@ export async function updateLoggedUser(data) {
 } 
 
 // ToDos
-export async function getAllTodoByUser(userId, filters) {
-    // TODO: adicionar lógica de filtros
-    return await supabase.from('Todo')
-                         .select('id, user_id, title, description, priority, created_at_, todo_date')
-                         .eq('id', userId) 
+export async function getAllTodoByUser(profileId, filters) {
+    const priority = [filters.normal ? 'normal' : '',
+                      filters.light ? 'light' : '',
+                      filters.medium ? 'medium' : '', 
+                      filters.high ? 'high' : '']
+    const title = filters.title ? filters.title : ''
+    let filterPriority = priority.filter(filter => filter !== '')
+    let statusFilter = [true, false]
+    if (filters.done || filters.notDone) {
+        statusFilter = []
+        statusFilter.push(filters.done ? true : false)
+        statusFilter.push(filters.notDone ? false : true)
+    }
+    if (filterPriority.length == 0) {
+        filterPriority = ['normal', 'light', 'medium', 'high']
+    }
+    let query = await supabase.from('Todo')
+                         .select('*')
+                         .eq('profile_id', profileId) 
+                         .eq('is_active', true)
+                         .order('created_at', { ascending: true })
+                         .ilike('title', `%${title}%`)
+                         .in('priority', filterPriority)
+                         .in('is_completed', statusFilter)
+    return query
+    
+
 }
 
-export async function createTodo(todo, user_id) {
+export async function createTodo(todo, profile_id) {
     return await supabase.from('Todo')
-                         .insert({ user_id, ...todo })
-                         .select('*')
+                         .insert({ profile_id, ...todo })
+                         .select()
 }
 
 export async function updateTodo(todo) {
+    delete todo.created_at
     return await supabase.from('Todo')
                          .update({...todo})
-                         .eq('id', todo.id)
                          .select('*')
+                         .eq('id', todo.id)
 }
 
 export async function getTodoById(id) {
     return await supabase.from('Todo')
+                         .select()
                          .eq('id', id)
-                         .select('*')
 }
 
 export async function deleteTodo(todo) {

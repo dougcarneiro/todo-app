@@ -12,14 +12,14 @@ import Profile from './components/Profile';
 import '../css/style.css';
 
 
+const user = await Storage.getUserByJWT()
+
 let searchInput = ''
 
 
-Todos.load(searchInput);
+await Todos.load(searchInput);
 
 TodoForm.create();
-
-const user = await Storage.getUserByJWT()
 
 if (user) {
     Profile.create(user);

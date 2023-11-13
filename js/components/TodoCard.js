@@ -88,17 +88,17 @@ function create(todo) {
     $(`#todo-${todo.id}`).classList.add(background.normal)
   }
  
-  $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).onchange = () => {
-    const updatedTodo = Todos.get(todo.id)
+  $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).onchange = async () => {
+    const updatedTodo = await Todos.get(todo.id)
     updatedTodo.is_completed = $(`#todo-${todo.id} .todo-toggle-status input[type='checkbox']`).checked
-    Todos.update(updatedTodo)
+    await Todos.update(updatedTodo)
   }
 
-  $(`#todo-${todo.id} .icon-pencil`).onclick = () => {
+  $(`#todo-${todo.id} .icon-pencil`).onclick = async () => {
     $('#form-title').textContent = 'Alterar Afazer'
-    const TodoToUpdate = Todos.get(todo.id)
-    TodoForm.setValues(TodoToUpdate);
-    TodoForm.handleSubmit();
+    const TodoToUpdate = await Todos.get(todo.id)
+    await TodoForm.setValues(TodoToUpdate);
+    await TodoForm.handleSubmit();
   };
 
   $(`#todo-${todo.id} .icon-trash`).onclick = () => {
