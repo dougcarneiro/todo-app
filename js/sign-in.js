@@ -71,7 +71,11 @@ function signUpForm() {
         if (!validLength) {
             signUpError(undefined, true, undefined)
         } else {
-            comparePasswords()
+            clearSignUpError(undefined, true, undefined)
+        }
+        if (!passwordsDiff()) {
+            clearSignUpError(undefined, undefined, true)
+            clearSignUpError(undefined, true, undefined)
         }
     })
 
@@ -80,12 +84,18 @@ function signUpForm() {
     })
 
     $('#confirm-password').addEventListener('blur', () => {
-        comparePasswords()
-        clearSignUpError(undefined, undefined, true)
+        if (!passwordsDiff()) {
+            clearSignUpError(undefined, undefined, true)
+        }
+        const validLength = checkLength()
+        if (!validLength) {
+            signUpError(undefined, true, undefined)
+        } else {
+            clearSignUpError(undefined, true, undefined)
+        }
     })
 
     $('#confirm-password').addEventListener('focus', () => {
-        comparePasswords()
         clearSignUpError(undefined, undefined, true)
     })
 
@@ -113,7 +123,7 @@ function checkLength() {
     return true
 }
 
-function comparePasswords() {
+function passwordsDiff() {
     if (!($('#confirm-password').value)) {
         return false
     }
@@ -125,7 +135,7 @@ function comparePasswords() {
 }
 
 function checkForToken() {
-    if(localStorage.getItem('@todo-app:jwt')) {
+    if (localStorage.getItem('@todo-app:jwt')) {
         window.location.href = 'index.html'
     }
 }
@@ -160,7 +170,6 @@ function signUpError(email=false, pass=false, confirmPass=false) {
     const msgId = email ? 'email-error-msg' : (pass ? 'pass-length-error-msg' : (confirmPass ? 'pass-error-msg'  : ''))
     const fieldId = email ? 'email' : (pass ? 'password' : (confirmPass ? 'confirm-password' : ''))
 
-
     if (email || pass || confirmPass) {
         $(`#${buttonId}`).setAttribute('disabled', 'disabled');
         $(`#${buttonId}`).classList.add('bg-violet-300')
@@ -171,29 +180,22 @@ function signUpError(email=false, pass=false, confirmPass=false) {
         $(`#${fieldId}`).classList.add('border-red-500')
         $(`#${fieldId}`).classList.add('bg-red-100')
     }
-
 }
 
 function clearSignUpError(email=false, pass=false, confirmPass=false) {
     const buttonId = 'sign-up-confirm'
-    const msgId = email ? 'email-error-msg' : (pass ? 'pass-length-error-msg' : (confirmPass ? 'pass-error-msg'  : ''))
-    const fieldId = email ? 'email' : (pass ? 'password' : (confirmPass ? 'confirm-password' : ''))
+    let msgId = email ? 'email-error-msg' : (pass ? 'pass-length-error-msg' : (confirmPass ? 'pass-error-msg'  : ''))
+    let fieldId = email ? 'email' : (pass ? 'password' : (confirmPass ? 'confirm-password' : ''))
     
-    if (confirmPass && !checkLength()) {
-        return
-    }
-
     if ((email && $('#email').value) || pass || confirmPass) {
-        if ($('#confirm-password').value == $('#password').value) {
-            $(`#${buttonId}`).removeAttribute('disabled', 'disabled');
-            $(`#${buttonId}`).classList.remove('bg-violet-300')
-            $(`#${buttonId}`).classList.add('bg-violet-600')
-            $(`#${buttonId}`).classList.add('hover:bg-violet-500')
-            $(`#${msgId}`).classList.add('hidden')
-            $(`#${fieldId}`).classList.add('border-violet-200')
-            $(`#${fieldId}`).classList.remove('border-red-500')
-            $(`#${fieldId}`).classList.remove('bg-red-100')
-        }
+        $(`#${buttonId}`).removeAttribute('disabled', 'disabled');
+        $(`#${buttonId}`).classList.remove('bg-violet-300')
+        $(`#${buttonId}`).classList.add('bg-violet-600')
+        $(`#${buttonId}`).classList.add('hover:bg-violet-500')
+        $(`#${msgId}`).classList.add('hidden')
+        $(`#${fieldId}`).classList.add('border-violet-200')
+        $(`#${fieldId}`).classList.remove('border-red-500')
+        $(`#${fieldId}`).classList.remove('bg-red-100')
     }
 }
 
@@ -253,7 +255,7 @@ function handleSubmit() {
         let formData
         const isSignUp = form.name.value ? true : false
         if (isSignUp) {
-            error = comparePasswords()
+            error = passwordsDiff()
         } 
         if (!error) {
             formData = getValues(isSignUp)
