@@ -46,24 +46,26 @@
                 </div>
             </div>
 
-            <div>
-                <div id='password-div' class="flex items-center justify-between">
+            <div id="password-div">
+                <div class="flex items-center justify-between">
                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Senha</label>
                         <div class="text-sm">
                             <a href="#" id="password-reset-button" class="font-semibold text-violet-600 hover:text-violet-500">Esqueceu a senha?</a>
                         </div>
-                    </div>
+                </div>
                     <div class="mt-2">
                         <input 
                         required 
                         id="password" 
                         name="password"
-                        minlength="6"
                         maxlength="30"
                         type="password" 
                         autocomplete="current-password" 
                         class="mt-1 mb-1 w-full py-1.5 px-4 block border text-violet-800 border-violet-200 rounded-md text-3xl focus:outline-none focus:ring-2 focus:ring-violet-500">
-                    </div>
+                        <p id="pass-length-error-msg" class="hidden mt-0 text-left text-sm text-red-600">
+                            A senha precisa ter ao menos seis caracteres.
+                        </p>
+                </div>
             </div>
 
             <div id="sign-in-button-div" class="">

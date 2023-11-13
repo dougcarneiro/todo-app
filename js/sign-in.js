@@ -13,7 +13,7 @@ $('#sign-up-button').addEventListener('click', () => {
 
 
 $('#email').addEventListener('focus', () => {
-    clearSignUpError(true, undefined)
+    clearSignUpError(true, undefined, undefined)
 })
 
 
@@ -50,7 +50,6 @@ function signUpForm() {
         <div class="mt-2">
             <input 
             required 
-            minlength="6"
             maxlength="30"
             id="confirm-password" 
             name="confirmPassword" 
@@ -60,18 +59,34 @@ function signUpForm() {
             <p id="pass-error-msg" class="hidden mt-0 text-left text-sm text-red-600">
                 As senhas precisam ser iguais.
             </p>
+            
         </div>
     </div>
     `
 
-    $('#password').insertAdjacentHTML('afterend', confirmPass)
+    $('#password-div').insertAdjacentHTML('beforeend', confirmPass)
+
+    $('#password').addEventListener('blur', () => {
+        const validLength = checkLength()
+        if (!validLength) {
+            signUpError(undefined, true, undefined)
+        } else {
+            comparePasswords()
+        }
+    })
+
+    $('#password').addEventListener('focus', () => {
+        clearSignUpError(undefined, true, undefined)
+    })
 
     $('#confirm-password').addEventListener('blur', () => {
         comparePasswords()
+        clearSignUpError(undefined, undefined, true)
     })
 
     $('#confirm-password').addEventListener('focus', () => {
-        clearSignUpError(undefined, true)
+        comparePasswords()
+        clearSignUpError(undefined, undefined, true)
     })
 
     $('#sign-up-confirm').addEventListener('click', () => {
@@ -90,12 +105,20 @@ function getValues(signUp) {
     return form
 } 
 
+function checkLength() {
+    const password = $('#password')
+    if (password.value && password.value.length <= 5){  
+        return false
+    } 
+    return true
+}
+
 function comparePasswords() {
     if (!($('#confirm-password').value)) {
         return false
     }
     if ($('#confirm-password').value != $('#password').value) {
-        signUpError(undefined, true)
+        signUpError(undefined, undefined, true)
         return true
     }
     return false
@@ -132,20 +155,13 @@ function invalidCredentials() {
     $('#sign-in-confirm').classList.remove('hover:bg-violet-500')
 }
 
-function signUpError(email=false, pass=false) {
+function signUpError(email=false, pass=false, confirmPass=false) {
     const buttonId = 'sign-up-confirm'
-    let msgId
-    let fieldId
-    if (email) {
-        msgId = 'email-error-msg'
-        fieldId = 'email'
-    }
+    const msgId = email ? 'email-error-msg' : (pass ? 'pass-length-error-msg' : (confirmPass ? 'pass-error-msg'  : ''))
+    const fieldId = email ? 'email' : (pass ? 'password' : (confirmPass ? 'confirm-password' : ''))
 
-    if (pass) {
-        msgId = 'pass-error-msg'
-        fieldId = 'confirm-password'
-    }
-    if (email || pass) {
+
+    if (email || pass || confirmPass) {
         $(`#${buttonId}`).setAttribute('disabled', 'disabled');
         $(`#${buttonId}`).classList.add('bg-violet-300')
         $(`#${buttonId}`).classList.remove('bg-violet-600')
@@ -158,20 +174,26 @@ function signUpError(email=false, pass=false) {
 
 }
 
-function clearSignUpError(email=false, pass=false) {
+function clearSignUpError(email=false, pass=false, confirmPass=false) {
     const buttonId = 'sign-up-confirm'
-    const msgId = `${email ? 'email' : (pass ? 'pass' : '' )}-error-msg`
-    const fieldId = `${email ? 'email' : (pass ? 'confirm-password' : '' )}`
+    const msgId = email ? 'email-error-msg' : (pass ? 'pass-length-error-msg' : (confirmPass ? 'pass-error-msg'  : ''))
+    const fieldId = email ? 'email' : (pass ? 'password' : (confirmPass ? 'confirm-password' : ''))
     
-    if ((email && $('#email').value) || pass) {
-        $(`#${buttonId}`).removeAttribute('disabled', 'disabled');
-        $(`#${buttonId}`).classList.remove('bg-violet-300')
-        $(`#${buttonId}`).classList.add('bg-violet-600')
-        $(`#${buttonId}`).classList.add('hover:bg-violet-500')
-        $(`#${msgId}`).classList.add('hidden')
-        $(`#${fieldId}`).classList.add('border-violet-200')
-        $(`#${fieldId}`).classList.remove('border-red-500')
-        $(`#${fieldId}`).classList.remove('bg-red-100')
+    if (confirmPass && !checkLength()) {
+        return
+    }
+
+    if ((email && $('#email').value) || pass || confirmPass) {
+        if ($('#confirm-password').value == $('#password').value) {
+            $(`#${buttonId}`).removeAttribute('disabled', 'disabled');
+            $(`#${buttonId}`).classList.remove('bg-violet-300')
+            $(`#${buttonId}`).classList.add('bg-violet-600')
+            $(`#${buttonId}`).classList.add('hover:bg-violet-500')
+            $(`#${msgId}`).classList.add('hidden')
+            $(`#${fieldId}`).classList.add('border-violet-200')
+            $(`#${fieldId}`).classList.remove('border-red-500')
+            $(`#${fieldId}`).classList.remove('bg-red-100')
+        }
     }
 }
 
@@ -242,7 +264,7 @@ function handleSubmit() {
             
             if (!data) {
                 clearLoading('sign-up-confirm')
-                signUpError(true, undefined)
+                signUpError(true, undefined, undefined)
             } else {
                 await generateToken(data)
             }
