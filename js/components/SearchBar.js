@@ -12,7 +12,7 @@ function create() {
                 </svg>
             </button>
 
-            <div id="search-filter-checkbox" class="z-[99] hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2" aria-labelledby="hs-dropdown-item-checkbox">
+            <div id="search-filter-checkbox" class="z-[50] hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2" aria-labelledby="hs-dropdown-item-checkbox">
                 <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
                         <input id="hs-dropdown-item-checkbox-done" name="hs-dropdown-item-checkbox-done" type="checkbox" class="done-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-done-description">
@@ -102,20 +102,20 @@ function create() {
         normalCheckbox: $('.normal-checkbox'),
     }
 
-    $('#search-button').addEventListener('click', (event) => {
-       search(event, checkboxes)
+    $('#search-button').addEventListener('click', async (event) => {
+       await search(event, checkboxes)
     })
 
     $('#search-filter-checkbox').addEventListener('click', (event) => {
         event.stopPropagation()
      })
 
-    $('#search-filter-checkbox').addEventListener('change', (event) => {
-        search(event, checkboxes)
+    $('#search-filter-checkbox').addEventListener('change', async (event) => {
+        await search(event, checkboxes)
      })
 }
 
-function search(event, checkboxes = {}) {
+async function search(event, checkboxes = {}) {
     event.preventDefault()
     const searchInput = document.querySelector('#search-input')
 
@@ -130,9 +130,9 @@ function search(event, checkboxes = {}) {
         medium: checkboxes.mediumCheckbox.checked,
         light: checkboxes.lightCheckbox.checked,
         normal: checkboxes.normalCheckbox.checked,
-        search: true,
+        isSearching: true,
     }
-    Todos.load(options);
+    await Todos.load(options);
 
 }
 

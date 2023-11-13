@@ -16,17 +16,16 @@ const user = await Storage.getUserByJWT()
 
 let searchInput = ''
 
+if (user) {
+    await Profile.create(user);
+} else {
+    Profile.login()
+    Storage.loadSeed('todos', []);
+}
 
 await Todos.load(searchInput);
 
 TodoForm.create();
-
-if (user) {
-    Profile.create(user);
-} else {
-    Profile.login()
-    Storage.loadSeed('todos', seed);
-}
 
 Modal.create();
 

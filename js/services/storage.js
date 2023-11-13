@@ -19,7 +19,7 @@ function storageSelect(key, isJSON = true) {
   return value;
 }
 
-function loadSeed(resource, data) {
+function loadSeed(resource, data=[]) {
   if (storageSelect('loaded', false) !== 'ok') {
     storageInsert(resource, data);
 
@@ -54,7 +54,12 @@ function read(resource, id) {
 }
 
 function update(resource, id, value) {
-  const values = storageSelect(resource);
+  let values = storageSelect(resource);
+
+  if (!values) {
+    storageInsert(resource, [value])
+    values = storageSelect(resource)
+  }
 
   const index = values.findIndex((value) => value.id === id);
 

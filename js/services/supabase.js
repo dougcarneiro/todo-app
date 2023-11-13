@@ -6,7 +6,7 @@ const SUPABASE_API_SECRET_KEY = import.meta.env.VITE_SUPABASE_API_SECRET_KEY
 
 const supabase = createClient(SUPABASE_PROJECT_URL, SUPABASE_API_SECRET_KEY)
 
-const PROFILE_SELECT = 'id, name, user_id, email'
+const PROFILE_SELECT = 'id, name, user_id, email, created_at'
 
 
 // PROFILE
