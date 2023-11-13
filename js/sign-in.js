@@ -74,8 +74,10 @@ function signUpForm() {
             clearSignUpError(undefined, true, undefined)
         }
         if (!passwordsDiff()) {
+            if (validLength) {
+                clearSignUpError(undefined, true, undefined)
+            }
             clearSignUpError(undefined, undefined, true)
-            clearSignUpError(undefined, true, undefined)
         }
     })
 
@@ -188,10 +190,12 @@ function clearSignUpError(email=false, pass=false, confirmPass=false) {
     let fieldId = email ? 'email' : (pass ? 'password' : (confirmPass ? 'confirm-password' : ''))
     
     if ((email && $('#email').value) || pass || confirmPass) {
-        $(`#${buttonId}`).removeAttribute('disabled', 'disabled');
-        $(`#${buttonId}`).classList.remove('bg-violet-300')
-        $(`#${buttonId}`).classList.add('bg-violet-600')
-        $(`#${buttonId}`).classList.add('hover:bg-violet-500')
+        if ($('#password').value >= 6 && $('#password').value == $('#confirm-password').value ) {
+            $(`#${buttonId}`).removeAttribute('disabled', 'disabled');
+            $(`#${buttonId}`).classList.remove('bg-violet-300')
+            $(`#${buttonId}`).classList.add('bg-violet-600')
+            $(`#${buttonId}`).classList.add('hover:bg-violet-500')
+        }
         $(`#${msgId}`).classList.add('hidden')
         $(`#${fieldId}`).classList.add('border-violet-200')
         $(`#${fieldId}`).classList.remove('border-red-500')
