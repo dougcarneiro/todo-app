@@ -190,7 +190,7 @@ function clearSignUpError(email=false, pass=false, confirmPass=false) {
     let fieldId = email ? 'email' : (pass ? 'password' : (confirmPass ? 'confirm-password' : ''))
     
     if ((email && $('#email').value) || pass || confirmPass) {
-        if ($('#password').value >= 6 && $('#password').value == $('#confirm-password').value ) {
+        if ($('#password').value.length >= 6 && $('#password').value == $('#confirm-password').value ) {
             $(`#${buttonId}`).removeAttribute('disabled', 'disabled');
             $(`#${buttonId}`).classList.remove('bg-violet-300')
             $(`#${buttonId}`).classList.add('bg-violet-600')
