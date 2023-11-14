@@ -45,7 +45,7 @@ async function create() {
                         </div>
                         <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-violet-500">
-                                Emails
+                                Email
                             </dt>
                             <dd id="profile-user-email" class="mt-1 text-sm text-violet-800 sm:mt-0 sm:col-span-2">
                             </dd>
@@ -83,7 +83,7 @@ async function create() {
             </div>
             <div class="fixed bottom-8 mx-14">
                 
-                <button id="logout-button" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-600 text-white hover:bg-violet-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600" data-hs-overlay="#hs-overlay-right">
+                <button id="logout-button" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600" data-hs-overlay="#hs-overlay-right">
                 <span class="iconify text-2xl text-violet-200" data-icon="mdi:logout" data-rotate="180deg"></span>
                 Sair da minha conta
                 </button>
