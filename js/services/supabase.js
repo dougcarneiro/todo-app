@@ -150,5 +150,14 @@ export async function deleteTodo(todo) {
     return await supabase.from('Todo')
                          .update({'is_active': false})
                          .eq('id', todo.id)
-                         .select('*')
+}
+
+export async function getTodosCountByProfileId(profileId, isCompleted=[false, true], isActive=[true]) {
+    const { count, error } = await supabase
+                         .from('Todo')
+                         .select('*', { count: 'exact', head: true })
+                         .eq('profile_id', profileId)
+                         .in('is_active', isActive)
+                         .in('is_completed', isCompleted)
+    return count
 }
