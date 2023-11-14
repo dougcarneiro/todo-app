@@ -2,12 +2,12 @@ import { $ } from '../lib/dom';
 import { formatDate } from '../lib/format';
 import Storage from '../services/storage'
 import { getTodosCountByProfileId } from '../services/supabase';
-import LoadSpinner from './LoadSpinner';
 
 async function create() {
     const profileButton = `
     <div class="fixed top-8 right-8">
         <button id="profile-button"type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600" data-hs-overlay="#hs-overlay-right">
+        <span class="iconify text-2xl text-violet-200" data-icon="iconamoon:profile-fill"></span>
         Meu Perfil
         </button>
     </div>
@@ -81,9 +81,10 @@ async function create() {
                     </dl>
                 </div>
             </div>
-            <div class="fixed bottom-8 right-8">
+            <div class="fixed bottom-8 mx-14">
                 
                 <button id="logout-button" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-600 text-white hover:bg-violet-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600" data-hs-overlay="#hs-overlay-right">
+                <span class="iconify text-2xl text-violet-200" data-icon="mdi:logout" data-rotate="180deg"></span>
                 Sair da minha conta
                 </button>
             </div>
@@ -148,6 +149,7 @@ function login() {
     const loginButton = `
     <div class="fixed top-8 right-8">
         <button id="login-button" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600">
+        <span class="iconify text-2xl text-violet-200" data-icon="mdi:login"></span>
         Entrar
         </button>
     </div>

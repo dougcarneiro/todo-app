@@ -135,7 +135,8 @@ function create() {
         class="new-todo-btn py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm"
         data-hs-overlay="#add-modal"
       >
-        + Novo Afazer
+        <span class="iconify text-violet-200 text-xl" data-icon="pajamas:todo-add"></span>
+        Novo Afazer
       </button>
     </div>
   `;
