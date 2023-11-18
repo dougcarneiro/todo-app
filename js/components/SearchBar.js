@@ -13,7 +13,8 @@ function create() {
             </button>
 
             <div id="search-filter-checkbox" class="z-[50] hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2" aria-labelledby="hs-dropdown-item-checkbox">
-                <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+            <span class="block text-sm text-left m-2 italic font-semibold text-violet-400">Por Status</span>
+                <div class="relative flex items-start py-2 px-3 mx-4 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
                         <input id="hs-dropdown-item-checkbox-done" name="hs-dropdown-item-checkbox-done" type="checkbox" class="done-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-done-description">
                     </div>
@@ -22,7 +23,7 @@ function create() {
                     <span id="hs-dropdown-item-checkbox-done-description" class="block text-sm text-violet-600">Afazeres finalizados</span>
                     </label>
                 </div>
-                <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+                <div class="relative flex items-start py-2 px-3 mx-4 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
                         <input id="hs-dropdown-item-checkbox-not-done" name="hs-dropdown-item-checkbox" type="checkbox" class="notDone-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-description">
                     </div>
@@ -31,7 +32,8 @@ function create() {
                     <span id="hs-dropdown-item-checkbox-not-done-description" class="block text-sm text-violet-600">Afazeres pendentes</span>
                     </label>
                 </div>
-                <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+                <span class="block text-sm text-left mt-4 m-2 italic font-semibold text-violet-400">Por Prioridade</span>
+                <div class="relative flex items-start py-2 px-3 mx-4 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
                         <input id="hs-dropdown-item-checkbox-high" name="hs-dropdown-item-checkbox-high" type="checkbox" class="high-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-high-description">
                     </div>
@@ -40,7 +42,7 @@ function create() {
                     <span id="hs-dropdown-item-checkbox-high-description" class="block text-sm text-violet-600">Afazeres de alta prioridade</span>
                     </label>
                 </div>
-                <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+                <div class="relative flex items-start py-2 px-3 mx-4 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
                         <input id="hs-dropdown-item-checkbox-medium" name="hs-dropdown-item-checkbox-medium" type="checkbox" class="medium-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-medium-description">
                     </div>
@@ -49,7 +51,7 @@ function create() {
                     <span id="hs-dropdown-item-checkbox-medium-description" class="block text-sm text-violet-600">Afazeres de média prioridade</span>
                     </label>
                 </div>
-                <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+                <div class="relative flex items-start py-2 px-3 mx-4 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
                         <input id="hs-dropdown-item-checkbox-light" name="hs-dropdown-item-checkbox-light" type="checkbox" class="light-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-light-description">
                     </div>
@@ -58,7 +60,7 @@ function create() {
                     <span id="hs-dropdown-item-checkbox-light-description" class="block text-sm text-violet-600">Afazeres de baixa prioridade</span>
                     </label>
                 </div>
-                <div class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100">
+                <div class="relative flex items-start py-2 px-3 mx-4 rounded-md hover:bg-gray-100">
                     <div class="flex items-center h-5 mt-1">
                         <input id="hs-dropdown-item-checkbox-normal" name="hs-dropdown-item-checkbox-normal" type="checkbox" class="normal-checkbox border-gray-200 rounded text-violet-600 focus:ring-violet-500" aria-describedby="hs-dropdown-item-checkbox-normal-description">
                     </div>
