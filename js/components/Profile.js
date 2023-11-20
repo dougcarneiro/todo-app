@@ -5,10 +5,10 @@ import { getTodosCountByProfileId } from '../services/supabase';
 
 async function create() {
     const profileButton = `
-    <div class="fixed top-8 right-8">
-        <button id="profile-button"type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600" data-hs-overlay="#hs-overlay-right">
+    <div class="fixed bottom-8 right-8 md:top-8">
+        <button id="profile-button"type="button" class="py-2 px-2 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600 md:py-3 md:px-4" data-hs-overlay="#hs-overlay-right">
         <span class="iconify text-2xl text-violet-200" data-icon="iconamoon:profile-fill"></span>
-        Meu Perfil
+        <span class="hidden lg:block">Meu Perfil</span>
         </button>
     </div>
     `
@@ -147,10 +147,10 @@ async function populateUserData() {
 
 function login() {
     const loginButton = `
-    <div class="fixed top-8 right-8">
-        <button id="login-button" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600">
+    <div class="fixed bottom-8 right-8 md:top-8">
+        <button id="login-button" type="button" class="py-2 px-2 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-violet-600 md:py-3 md:px-4">
         <span class="iconify text-2xl text-violet-200" data-icon="mdi:login"></span>
-        Entrar
+        <span class="hidden lg:block">Entrar</span>
         </button>
     </div>
     `

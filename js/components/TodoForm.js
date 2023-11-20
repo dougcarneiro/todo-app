@@ -129,14 +129,14 @@ function create() {
   `;
 
   const newTodoBtn = `
-    <div class="fixed top-8 left-8">
+    <div class="fixed bottom-8 left-8 md:top-8">
       <button
         type="button"
-        class="new-todo-btn py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm"
+        class="new-todo-btn inline-flex py-2 px-2 justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm md:py-3 md:px-4"
         data-hs-overlay="#add-modal"
       >
         <span class="iconify text-violet-200 text-xl" data-icon="pajamas:todo-add"></span>
-        Novo Afazer
+        <span class="hidden lg:block">Novo Afazer</span>
       </button>
     </div>
   `;

@@ -6,7 +6,8 @@ function create() {
     const dropdownFilter = `
         <div id="filters" class="hs-dropdown" data-hs-dropdown-auto-close="inside">
             <button id="hs-dropdown-item-checkbox" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-violet-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm">
-            Filtros
+            <span class="iconify text-violet-600 text-xl" data-icon="ion:filter"></span>
+            <span class="hidden lg:block">Filtros</span>
                 <svg class="hs-dropdown-open:rotate-180 w-2.5 h-2.5 text-violet-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
@@ -73,7 +74,7 @@ function create() {
         </div>`
     
     const searchBar = `
-    <form id="search-bar" class="mx-2 flex items-center justify-center w-1/3">   
+    <form id="search-bar" class="mx-2 flex items-center justify-center w-fit md:mt-0 md:w-1/3">   
         <div class="relative w-full my-8">
             <div class=""/>
             </div>
