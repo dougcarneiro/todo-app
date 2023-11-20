@@ -74,11 +74,11 @@ function create() {
         </div>`
     
     const searchBar = `
-    <form id="search-bar" class="mx-2 flex items-center justify-center w-fit md:mt-0 md:w-1/3">   
+    <form id="search-bar" class="ml-2 flex items-center justify-center w-fit md:mt-0 md:w-1/3">   
         <div class="relative w-full my-8">
             <div class=""/>
             </div>
-            <input type="text" id="search-input" class="bg-white border-none rounded-md text-violet-900 text-md hover:outline-none hover:ring-2 hover:ring-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 text-md block w-full pl-10 p-2.5 placeholder-violet-500" placeholder="Busque por um afazer..." required>
+            <input type="text" id="search-input" class="bg-white border-none rounded-md text-violet-900 text-sm hover:outline-none hover:ring-2 hover:ring-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 block w-full pl-10 p-2.5 placeholder-violet-500 md:text-lg" placeholder="Busque por um afazer..." required>
         </div>
         <button id="search-button" type="submit" class="p-2.5 ml-2 text-md font-medium rounded-full bg-violet-500 text-white hover:bg-violet-600 hover:outline-none hover:ring-2 hover:ring-violet-500 hover:ring-offset-2 transition-all text-md">
             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -89,7 +89,7 @@ function create() {
     </form>`
 
     const searchComponent = `
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center mx-4 w-auto md:mx-0">
         ${dropdownFilter}
         ${searchBar}
     </div>
