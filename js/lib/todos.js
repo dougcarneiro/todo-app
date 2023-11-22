@@ -146,13 +146,11 @@ function updateSpinner() {
       </div>
       `
       $('.todo').classList.add('blur-md')
-      $('.container a').classList.add('blur-md')
       $('.todo').insertAdjacentHTML('beforebegin', loading)
 }
 
 function clearUpdateSpinner() {
   $("#loading-spinner").remove()
-    $('.container a').classList.remove('blur-md')
     $('.todo').classList.remove('blur-md')
 }
 
